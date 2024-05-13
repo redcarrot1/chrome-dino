@@ -7,6 +7,7 @@ import user_interface.GameScreen;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.regex.Matcher;
@@ -81,29 +82,35 @@ public class Score {
 
     public void writeScore() {
         if (score > hiScore) {
-            File file;
+            File file = null;
             // here i check if program is running from jar file so that i know where to store best results
             // again because of that i use here ClassLoader
             if (isJar()) {
-                file = new File(ClassLoader.getSystemClassLoader().getResource("").getPath() + scoreFileName);
+                URL resource = ClassLoader.getSystemClassLoader().getResource("");
+                if (resource != null) {
+                    file = new File(ClassLoader.getSystemClassLoader().getResource("").getPath() + scoreFileName);
+                }
             }
             else {
                 file = scoreFile;
             }
 
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
-                // just format of results, storing here result, date, player, where player is just Dino because i dont have any friends.....
-                String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-                bw.write(String.format("result=%s,date=%s,player=%s\n", (int) score, date, "Dino"));
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (file != null) {
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+                    // just format of results, storing here result, date, player, where player is just Dino because i dont have any friends.....
+                    String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+                    bw.write(String.format("result=%s,date=%s,player=%s\n", (int) score, date, "Dino"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     private void readScore() {
         // another ClassLoader to know from where to read best scores
-        if (scoreFile.exists() || new File(ClassLoader.getSystemClassLoader().getResource("").getPath() + scoreFileName).exists()) {
+        URL resource = ClassLoader.getSystemClassLoader().getResource("");
+        if (resource != null && (scoreFile.exists() || new File(resource.getPath() + scoreFileName).exists())) {
             String line = "";
             File file;
             // again jar file check
