@@ -46,6 +46,7 @@ public class GameScreen extends JPanel implements Runnable {
     private final Land land;
     private final EnemyManager eManager;
     private final SoundManager gameOverSound;
+    private final SoundManager backgroundSound;
     private final ControlsManager cManager;
 
     public GameScreen() {
@@ -64,12 +65,16 @@ public class GameScreen extends JPanel implements Runnable {
         this.dino = new Dino(controls);
         this.land = new Land(this);
         this.eManager = new EnemyManager(this);
+
         this.gameOverSound = new SoundManager("resources/dead.wav");
+        this.backgroundSound = new SoundManager("resources/background_music.wav");
         this.gameOverSound.startThread();
+        this.backgroundSound.startThread();
     }
 
     public void startThread() {
         thread.start();
+        backgroundSound.play();
     }
 
     @Override

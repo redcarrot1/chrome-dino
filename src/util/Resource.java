@@ -35,8 +35,9 @@ public class Resource {
         try {
             clip = AudioSystem.getClip();
             // same situation why i have ClassLoader here
-            if (file.exists())
+            if (file.exists()) {
                 clip.open(AudioSystem.getAudioInputStream(file));
+            }
             else {
                 path = path.substring(path.indexOf("/") + 1);
                 clip.open(AudioSystem.getAudioInputStream(ClassLoader.getSystemClassLoader().getResource(path)));

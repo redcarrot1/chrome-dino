@@ -1,5 +1,7 @@
 package manager;
 
+import javax.sound.sampled.Clip;
+
 import static util.Resource.getSound;
 
 // creating new thread for every sound because when i tried to just play sound in main thread
@@ -29,7 +31,8 @@ public class SoundManager implements Runnable {
                 e.printStackTrace();
             }
             if (playSound) {
-                getSound(path).start();
+                Clip sound = getSound(path);
+                sound.start();
                 playSound = false;
             }
         }
