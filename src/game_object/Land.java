@@ -21,7 +21,7 @@ public class Land {
 
     public Land(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
-        this.land = getImage("resources/background.png");
+        this.land = getImage("resources/background2.png");
         this.y = SCREEN_HEIGHT - land.getHeight() * 2 - 4;
         this.landWidthScaled = land.getWidth() * 2;
         this.landHeightScaled = land.getHeight() * 2;
