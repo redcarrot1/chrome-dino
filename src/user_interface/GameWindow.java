@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class GameWindow extends JFrame {
 
-    public static final int SCREEN_WIDTH = 1200;
-    public static final int SCREEN_HEIGHT = 300;
+    public static final int SCREEN_WIDTH = (int) (1200 * 1.6);
+    public static final int SCREEN_HEIGHT = (int) (300 * 1.6);
 
     private final GameScreen gameScreen;
 

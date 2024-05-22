@@ -1,7 +1,2 @@
-result=21,date=20200420_144048,player=Dino
-result=58,date=20200420_144054,player=Dino
-result=328,date=20200420_144126,player=Dino
-result=367,date=20200422_130458,player=Dino
-result=408,date=20200425_162524,player=Dino
-result=537,date=20200425_164524,player=Dino
-result=1898,date=20240511_003736,player=Dino
+result=24,date=20240522_102757,player=Dino
+result=368,date=20240522_102836,player=Dino

@@ -23,11 +23,11 @@ public class GameScreen extends JPanel implements Runnable {
 
     private final Thread thread;
 
-    private static final int STARTING_SPEED_X = -5;
-    private static final double DIFFICULTY_INC = -0.002;
+    private static final int STARTING_SPEED_X = -8;
+    private static final double DIFFICULTY_INC = -0.003;
 
     public static final double GRAVITY = 0.4;
-    public static final int GROUND_Y = 280;
+    public static final int GROUND_Y = (int) (280 * 1.6);
     public static final double SPEED_Y = -12;
 
     private final int FPS = 140;
@@ -46,7 +46,7 @@ public class GameScreen extends JPanel implements Runnable {
     private final Land land;
     private final EnemyManager eManager;
     private final SoundManager gameOverSound;
-    private final SoundManager backgroundSound;
+    //private final SoundManager backgroundSound;
     private final ControlsManager cManager;
 
     public GameScreen() {
@@ -67,14 +67,14 @@ public class GameScreen extends JPanel implements Runnable {
         this.eManager = new EnemyManager(this);
 
         this.gameOverSound = new SoundManager("resources/dead.wav");
-        this.backgroundSound = new SoundManager("resources/background_music.wav");
+        //this.backgroundSound = new SoundManager("resources/background_music.wav");
         this.gameOverSound.startThread();
-        this.backgroundSound.startThread();
+        //this.backgroundSound.startThread();
     }
 
     public void startThread() {
         thread.start();
-        backgroundSound.play();
+        //backgroundSound.play();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class GameScreen extends JPanel implements Runnable {
 
             // little pause to not start new game if you are spamming your keys
             if (gameState == GameState.GAME_STATE_OVER) {
-                waitingTime = 500;
+                waitingTime = 3000;
             }
             else {
                 dino.dinoDead.currentSpriteIndex = 0;
