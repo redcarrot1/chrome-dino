@@ -94,6 +94,8 @@ public class GameScreen extends JPanel implements Runnable {
             // little pause to not start new game if you are spamming your keys
             if (gameState == GameState.GAME_STATE_OVER) {
                 waitingTime = 3000;
+                eManager.cactusesPercentage = 2;
+                eManager.birdsPercentage = 1;
             }
             else {
                 dino.dinoDead.currentSpriteIndex = 0;

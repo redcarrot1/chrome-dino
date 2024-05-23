@@ -15,8 +15,8 @@ public class EnemyManager {
     private static final int MINIMUM_DISTANCE = 250;
 
     private double distanceBetweenEnemies = 750;
-    private double cactusesPercentage = 2;
-    private double birdsPercentage = 1;
+    public double cactusesPercentage = 2;
+    public double birdsPercentage = 1;
 
     private final Cactuses cactuses;
     private final Birds birds;
